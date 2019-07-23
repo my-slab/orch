@@ -1,0 +1,5 @@
+export { default as IconBookmarkBorder } from './IconBookmarkBorder'
+export { default as IconLocalOffer } from './IconLocalOffer'
+export { default as IconRemoveShoppingCart } from './IconRemoveShoppingCart'
+export { default as IconShoppingCart } from './IconShoppingCart'
+export { default as IconVideoGameAsset } from './IconVideoGameAsset'
