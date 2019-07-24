@@ -1,3 +1,4 @@
+import breakpoints from './breakpoints'
 import colors from './colors'
 import fontSizes from './fontSizes'
 import fonts from './fonts'
@@ -8,6 +9,7 @@ import sizes from './sizes'
 import space from './space'
 
 export default {
+  ...breakpoints,
   ...colors,
   ...fontSizes,
   ...fonts,
