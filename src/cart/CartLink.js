@@ -10,7 +10,12 @@ import { IconShoppingCart } from '../ui/Icons'
 
 const CartLink = () => {
   const [state] = useContext(CartContext)
-  const count = [...state.lineItemIds].length
+  const lineItemIds = [...state.lineItemIds]
+
+  const count = lineItemIds.reduce((acc, id) => {
+    const { quantity } = state.lineItems[id]
+    return acc + 1 * quantity
+  }, 0)
 
   return (
     <Link to="/checkout">

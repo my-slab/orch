@@ -1,6 +1,7 @@
 import React from 'react'
 
 import styled from 'styled-components'
+import { css } from '@styled-system/css'
 
 import Button from '../ui/Button'
 import IconButton from '../ui/IconButton'
@@ -29,13 +30,9 @@ export default ({
           variant="secondary"
         />
 
-        <Button
-          display={['none', 'initial']}
-          onClick={() => removeLineItem(id)}
-          variant="secondary"
-        >
+        <S.Button onClick={() => removeLineItem(id)} variant="secondary">
           remove from cart
-        </Button>
+        </S.Button>
 
         <label for="amount">
           Amount:{' '}
@@ -61,11 +58,12 @@ export default ({
 const S = {
   Td: styled(Td)`
     text-align: right;
-  `
+  `,
+  Button: styled(Button)(css({ display: ['none', 'inline-block'] }))
 }
 
 const MoneyCell = ({ value }) => (
-  <S.Td width="1%">
+  <S.Td width="1%" minWidth={70}>
     <Money value={value} />
   </S.Td>
 )
