@@ -7,7 +7,12 @@ import Heading from '../ui/Heading'
 import games from './games'
 import { CartContext } from '../App'
 
-import { addItems } from '../actions'
+import {
+  addItems,
+  addLineItem,
+  addWishlistItem,
+  removeWishlistItem
+} from '../actions'
 
 const Empty = () => (
   <Box px="lg" pb="lg">
@@ -29,10 +34,23 @@ const GameList = () => {
     dispatch(addItems(games))
   }, [])
 
+  const handleAddLineItem = id => dispatch(addLineItem(id))
+  const handleAddWishlistItem = id => dispatch(addWishlistItem(id))
+  const handleRemoveWishlistItem = id => dispatch(removeWishlistItem(id))
+
   return (
     <Flex flexWrap="wrap" justifyContent="center">
       {itemIds.length ? (
-        itemIds.map(id => <Game key={id} id={id} {...state.items[id]} />)
+        itemIds.map(id => (
+          <Game
+            addLineItem={handleAddLineItem}
+            addWishlistItem={handleAddWishlistItem}
+            handleRemoveWishlistItem={handleRemoveWishlistItem}
+            id={id}
+            key={id}
+            {...state.items[id]}
+          />
+        ))
       ) : (
         <Empty />
       )}

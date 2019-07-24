@@ -4,41 +4,16 @@ import PropTypes from 'prop-types'
 
 import Box from '../ui/Box'
 import Button from '../ui/Button'
+import CartButton from './CartButton'
 import Flex from '../ui/Flex'
 import IconButton from '../ui/IconButton'
 import Money from '../utils/Money'
 import Text from '../ui/Text'
-import { IconBookmarkBorder, IconShoppingCart } from '../ui/Icons'
+import WishlistButton from './WishlistButton'
 import { CartContext } from '../App'
+import { IconBookmarkBorder, IconShoppingCart } from '../ui/Icons'
 
-import { addLineItem, addWishlistItem, removeWishlistItem } from '../actions'
-
-const Wishlist = ({ itemId }) => {
-  const [{ wishlistItemIds }, dispatch] = useContext(CartContext)
-  const isOnWishlist = wishlistItemIds.has(itemId)
-
-  return (
-    <Button
-      variant="secondary"
-      onClick={() => {
-        isOnWishlist
-          ? dispatch(removeWishlistItem(itemId))
-          : dispatch(addWishlistItem(itemId))
-      }}
-    >
-      {isOnWishlist ? 'On wishlist' : 'Save to wishlist'}
-    </Button>
-  )
-}
-
-const Cart = ({ itemId }) => {
-  const [, dispatch] = useContext(CartContext)
-  return (
-    <Button onClick={() => dispatch(addLineItem(itemId))}>Add to cart</Button>
-  )
-}
-
-const Footer = ({ discount, id, price, title }) => (
+const Footer = ({ discount, id, price }) => (
   <Box p={['sm', 'md']}>
     <Flex alignItems="center" justifyContent="space-between" mb={[0, 'lg']}>
       <Text fontSize="lg" fontWeight="bold">
@@ -54,12 +29,8 @@ const Footer = ({ discount, id, price, title }) => (
       </Box>
 
       <Box display={['initial', 'none']}>
-        <IconButton icon={IconShoppingCart} onClick={() => {}} />
-        <IconButton
-          icon={IconBookmarkBorder}
-          onClick={() => {}}
-          variant="secondary"
-        />
+        <CartButton itemId={id} />
+        <WishlistButton itemId={id} />
       </Box>
     </Flex>
 
@@ -68,8 +39,8 @@ const Footer = ({ discount, id, price, title }) => (
       alignItems="center"
       justifyContent="space-between"
     >
-      <Cart itemId={id} />
-      <Wishlist itemId={id} />
+      <CartButton itemId={id} />
+      <WishlistButton itemId={id} />
     </Flex>
   </Box>
 )

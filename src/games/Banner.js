@@ -12,7 +12,11 @@ import Text from '../ui/Text'
 import { IconLocalOffer } from '../ui/Icons'
 
 const S = {
-  BackgroundImage: styled(BackgroundImage)(props => ({
+  BackgroundImageSM: styled(BackgroundImage)(props => ({
+    borderTopLeftRadius: themeGet('radii.lg')(props),
+    borderBottomLeftRadius: themeGet('radii.lg')(props)
+  })),
+  BackgroundImageLG: styled(BackgroundImage)(props => ({
     borderTopLeftRadius: themeGet('radii.lg')(props),
     borderTopRightRadius: themeGet('radii.lg')(props)
   }))
@@ -22,7 +26,10 @@ const Pill = ({ discount }) => (
   <Absolute top={[8, 16]} left={[8, 16]}>
     <Box borderRadius="sm" bg="orcaGreen">
       <Text color="white" case="upper" fontWeight="bold" p="xs" fontSize="xs">
-        <IconLocalOffer /> save <Money value={discount} />
+        <Box display={['initial', 'none']}>
+          <IconLocalOffer /> save <Money value={discount} />
+        </Box>
+        <Box display={['none', 'initial']}>On Sale!</Box>
       </Text>
     </Box>
   </Absolute>
@@ -32,13 +39,20 @@ Pill.displayName = 'Pill'
 
 const Banner = ({ discount, image, isOnSale, ...props }) => (
   <Box width="full">
-    <S.BackgroundImage image={image} {...props} />
+    <S.BackgroundImageSM
+      display={['inherit', 'none']}
+      image={image}
+      {...props}
+    />
+
+    <S.BackgroundImageLG
+      display={['none', 'inherit']}
+      image={image}
+      {...props}
+    />
     {isOnSale && <Pill discount={discount} />}
   </Box>
 )
-
-// <Relative {...props} width={[150, 'full']}>
-// </Relative>
 
 Banner.displayName = 'Banner'
 

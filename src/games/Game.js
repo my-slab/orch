@@ -11,10 +11,22 @@ import Footer from './Footer'
 const S = {
   Flex: styled(Flex)`
     position: relative;
+    min-height: 150px;
   `
 }
 
-const Game = ({ description, discount, id, image, price, title, ...props }) => (
+const Game = ({
+  addLineItem,
+  addWishlistItem,
+  description,
+  discount,
+  id,
+  image,
+  price,
+  removeWishlistItem,
+  title,
+  ...props
+}) => (
   <Card width={['full', 350]} {...props} m={['sm', 'lg']}>
     <S.Flex flexDirection={['row', 'column']}>
       <Banner discount={discount} image={image} isOnSale={!!discount} />
@@ -26,7 +38,15 @@ const Game = ({ description, discount, id, image, price, title, ...props }) => (
         minWidth={256}
       >
         <Detail description={description} price={price} title={title} />
-        <Footer discount={discount} id={id} price={price} title={title} />
+        <Footer
+          addLineItem={addLineItem}
+          addWishlistItem={addWishlistItem}
+          discount={discount}
+          id={id}
+          price={price}
+          removeWishlistItem={removeWishlistItem}
+          title={title}
+        />
       </Flex>
     </S.Flex>
   </Card>
