@@ -5,7 +5,7 @@ import { css } from '@styled-system/css'
 
 import Button from '../ui/Button'
 import IconButton from '../ui/IconButton'
-import { CartContext } from '../App'
+import { CartContext } from '../CartProvider'
 import { IconShoppingCart } from '../ui/Icons'
 import { addLineItem } from '../actions'
 
