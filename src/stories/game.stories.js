@@ -1,20 +1,19 @@
 import React from 'react'
 
-import styled from 'styled-components'
 import { action } from '@storybook/addon-actions'
-import { storiesOf } from '@storybook/react'
+import { storiesOf, addDecorator } from '@storybook/react'
 
-import Banner from '../src/games/Banner'
-import Box from '../src/ui/Box'
-import Card from '../src/ui/Card'
-import CartProvider from '../src/CartProvider'
-import Detail from '../src/games/Detail'
-import Flex from '../src/ui/Flex'
-import Footer from '../src/games/Footer'
-import Game from '../src/games/Game'
-import Heading from '../src/ui/Heading'
-import Relative from '../src/ui/Relative'
-import Text from '../src/ui/Text'
+import Banner from '../games/Banner'
+import Box from '../ui/Box'
+import Card from '../ui/Card'
+import CartProvider from '../CartProvider'
+import Detail from '../games/Detail'
+import Flex from '../ui/Flex'
+import Footer from '../games/Footer'
+import Game from '../games/Game'
+import Relative from '../ui/Relative'
+import ThemeProvider from '../ui/ThemeProvider'
+import theme from '../ui/theme'
 import { Block, Section } from './Helpers'
 
 const game = {
@@ -34,6 +33,7 @@ const handleAddToCart = action('add to cart')
 const handleAddToWishlist = action('add to wishlist')
 
 storiesOf('Games', module)
+  .addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>)
   .add('game', () => (
     <CartProvider>
       <Box>

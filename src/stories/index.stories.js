@@ -1,31 +1,29 @@
 import React from 'react'
 
-import styled from 'styled-components'
-import { storiesOf } from '@storybook/react'
+import { storiesOf, addDecorator } from '@storybook/react'
 
-import Absolute from '../src/ui/Absolute'
-import BackgroundImage from '../src/ui/BackgroundImage'
-import Box from '../src/ui/Box'
-import Button from '../src/ui/Button'
-import Card from '../src/ui/Card'
-import Flex from '../src/ui/Flex'
-import Heading from '../src/ui/Heading'
-import IconButton from '../src/ui/IconButton'
-import Input from '../src/ui/Input'
-// import Money from '../src/games/Money'
-import Nav from '../src/ui/Nav'
-import Relative from '../src/ui/Relative'
-import Text from '../src/ui/Text'
-
-import { Table, Tr, Td } from '../src/ui/Table'
+import Absolute from '../ui/Absolute'
+import BackgroundImage from '../ui/BackgroundImage'
+import Box from '../ui/Box'
+import Button from '../ui/Button'
+import Card from '../ui/Card'
+import Flex from '../ui/Flex'
+import Heading from '../ui/Heading'
+import IconButton from '../ui/IconButton'
+import Input from '../ui/Input'
+import Nav from '../ui/Nav'
+import Relative from '../ui/Relative'
+import Text from '../ui/Text'
+import ThemeProvider from '../ui/ThemeProvider'
+import theme from '../ui/theme'
 import {
   IconBookmarkBorder,
   IconLocalOffer,
-  IconRemoveShoppingCart,
   IconShoppingCart
-} from '../src/ui/Icons'
+} from '../ui/Icons'
 
 storiesOf('ui components', module)
+  .addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>)
   .add('Box', () => <Box bg="orcaBlue" height={200} m="md" width={200} />)
   .add('Flex', () => (
     <Flex justifyContent="space-between" m="md">
@@ -105,49 +103,8 @@ storiesOf('ui components', module)
       <Nav />
     </Box>
   ))
-  // .add('Table', () => (
-  //   <Box p="md">
-  //     <Box bg="surface">
-  //       <Table width="full">
-  // <Tr>
-  //   <Td>the last of us part II</Td>
-  //   <Td textAlign="right">
-  //     <Button variant="secondary">remove from cart</Button>
-  //     <label for="amount">
-  //       Amount: <Input name="amount" type="number" width={64} />
-  //     </label>
-  //   </Td>
-  //   <MoneyCell value={200} />
-  // </Tr>
-  //         <Tr>
-  //           <Td>the last of us part II</Td>
-  //           <Td textAlign="right">
-  //             <Button variant="secondary">remove from cart</Button>
-  //             <IconButton icon={IconRemoveShoppingCart} variant="secondary" />
-  //             <label for="amount">
-  //               Amount: <Input name="amount" type="number" width={64} />
-  //             </label>
-  //           </Td>
-  //           <MoneyCell value={100} />
-  //         </Tr>
-  //       </Table>
-  //     </Box>
-  //   </Box>
-  // ))
   .add('Input', () => (
     <Box p="md">
       <Input type="number" width={64} />
     </Box>
   ))
-
-// const S = {
-//   Td: styled(Td)`
-//     text-align: right;
-//   `
-// }
-
-// const MoneyCell = ({ value }) => (
-//   <S.Td width="1%">
-//     <Money value={value} />
-//   </S.Td>
-// )

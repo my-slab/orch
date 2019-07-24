@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Box from '../src/ui/Box'
-import Flex from '../src/ui/Flex'
-import Heading from '../src/ui/Heading'
-import Text from '../src/ui/Text'
+import Box from '../ui/Box'
+import Flex from '../ui/Flex'
+import Heading from '../ui/Heading'
+import Text from '../ui/Text'
 
 const Block = ({ children, title = 'default' }) => (
   <Box mb="md">
