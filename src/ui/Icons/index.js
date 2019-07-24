@@ -1,3 +1,4 @@
+export { default as IconBookmark } from './IconBookmark'
 export { default as IconBookmarkBorder } from './IconBookmarkBorder'
 export { default as IconLocalOffer } from './IconLocalOffer'
 export { default as IconRemoveShoppingCart } from './IconRemoveShoppingCart'
