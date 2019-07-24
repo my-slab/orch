@@ -1,17 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
 import PropTypes from 'prop-types'
 
 import Box from '../ui/Box'
-import Button from '../ui/Button'
 import CartButton from './CartButton'
 import Flex from '../ui/Flex'
-import IconButton from '../ui/IconButton'
 import Money from '../utils/Money'
 import Text from '../ui/Text'
 import WishlistButton from './WishlistButton'
-import { CartContext } from '../App'
-import { IconBookmarkBorder, IconShoppingCart } from '../ui/Icons'
 
 const Footer = ({ discount, id, price }) => (
   <Box p={['sm', 'md']}>
