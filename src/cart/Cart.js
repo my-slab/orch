@@ -8,7 +8,7 @@ import Heading from '../ui/Heading'
 import LineItem from './LineItem'
 import Summary from './Summary'
 import Text from '../ui/Text'
-import { CartContext } from '../App'
+import { CartContext } from '../CartProvider'
 import { Table } from '../ui/Table'
 import { removeLineItem, updateLineItem } from '../actions'
 

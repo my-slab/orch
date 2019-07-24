@@ -5,7 +5,7 @@ import { Link } from '@reach/router'
 import Absolute from '../ui/Absolute'
 import Flex from '../ui/Flex'
 import Text from '../ui/Text'
-import { CartContext } from '../App'
+import { CartContext } from '../CartProvider'
 import { IconShoppingCart } from '../ui/Icons'
 
 const CartLink = () => {
