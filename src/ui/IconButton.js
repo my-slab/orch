@@ -21,7 +21,7 @@ const IconButton = ({ icon, ...props }) => {
 
   return (
     <S.Button {...props}>
-      <Icon {...props} />
+      <Icon />
     </S.Button>
   )
 }
